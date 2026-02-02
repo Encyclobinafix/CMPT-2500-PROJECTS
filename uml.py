@@ -3,7 +3,7 @@ class Movie:
     Represents a movie with its details.
     """
 
-    def _init_(self, title:str, genre:str, year:int):
+    def __init__(self, title:str, genre:str, year:int):
         """
         Intitalize the Moview object with a title, genre, and year.
         Arguments:
@@ -29,7 +29,7 @@ class MovieManager:
     Manages a collection of movies
     """
 
-    def _init_(self):
+    def __init__(self):
         """
         Initilalizes with an empty list of movies.
         """
@@ -65,32 +65,37 @@ class MovieManager:
             print("Invalid index.")
 
 
+def main():
+    """
+    Menu-driven interaction.
+    """
+    manager = MovieManager()
 
-manager = MovieManager()
+    while True:
+        print("\n--- Movie Management System ---")
+        print("1. Add a Movie")
+        print("2. View Movies")
+        print("3. Delete a Movie")
+        print("4. Exit")
 
-while True:
-    print("\n--- Movie Management System ---")
-    print("1. Add a Movie")
-    print("2. View Movies")
-    print("3. Delete a Movie")
-    print("4. Exit")
+        choice = input("Enter your choice (1-4): ")
 
-    choice = input("Enter your choice (1-4): ")
-
-    if choice == "1":
-        title = input("Enter movie title: ")
-        genre = input("Enter movie genre: ")
-        year = input("Enter release year: ")
-        manager.add_movie(title, genre, year)
-    elif choice == "2":
-        manager.view_movies()
-    elif choice == "3":
-        manager.view_movies()
-        index = int(input("Enter the number of the movie to delete: "))
-        manager.delete_movie(index)
-    elif choice == "4":
-        print("Goodbye!")
-        break
-    else:
-        print("Invalid choice. Try again.")
-        
+        if choice == "1":
+            title = input("Enter movie title: ")
+            genre = input("Enter movie genre: ")
+            year = input("Enter release year: ")
+            manager.add_movie(title, genre, year)
+        elif choice == "2":
+            manager.view_movies()
+        elif choice == "3":
+            manager.view_movies()
+            index = int(input("Enter the number of the movie to delete: "))
+            manager.delete_movie(index)
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Try again.")
+           
+if __name__ == "__main__":
+    main()
